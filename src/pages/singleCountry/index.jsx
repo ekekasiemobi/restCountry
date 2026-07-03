@@ -44,12 +44,12 @@ function SingleCountry() {
         <div className='dark:bg-slate-800 dark:text-white'>
           <Nav />
         
-          <div className='w-[90vw] h-screen m-auto'>
-              <div className=' mt-10 bg-white md:shadow w-fit px-6 py-3 dark:bg-slate-800 '>
+          <div className='w-[90vw] min-h-screen m-auto'>
+              <div className=' mt-10 bg-white md:shadow w-fit px-6 py-3 dark:bg-slate-800 dark:shadow-lg dark:shadow-zinc-700/90 '>
                   <Link to="/" className=''><button className=''>Go Back</button></Link>
               </div>
 
-              <div className='flex gap-14 mt-15'>
+              <div className='flex flex-col gap-14 mt-15 md:flex-row'>
                 
                 <div>
                   <img className='h-70 w-full' src={countries.flags.png} alt={countries.name} />
@@ -58,22 +58,33 @@ function SingleCountry() {
                 <div className=' p-4'>
                   <h3 className='font-bold mb-5'>{countries.name}</h3>
 
-                  <h3><span className='font-bold text-black'>Native Name: </span>{countries.native}  </h3>
+                  <h3><span className='font-bold'>Native Name: </span>{countries.nativeName}  </h3>
                   <p><span  className='font-bold' >Population:</span> {countries.population.toLocaleString()}</p>
 
-                  <p> <span className='font-bold text-black' > Sub Region:</span> {countries.region}</p>
+                  <p> <span className='font-bold'> Sub Region:</span> {countries.region}</p>
 
-                  <p> <span className='font-bold' >Capital:</span>{countries.capital}</p>
+                  <p> <span className='font-bold'>Capital:</span>{countries.capital}</p>
 
-                  <h3 className='font-bold mt-10'>{countries.border} <span>Border Countries</span> </h3>
+                  <h3 className='font-bold mt-10'>Border Countries: {countries && countries.borders && countries.borders.map((border) => {
+                    return(
+                      <span>{border}</span>
+                    )
+                  })}
+                  </h3>
                 </div>
 
                 <div className='p-4'>
                   <p><span  className='font-bold' >Top Level Domain:</span> {countries.population.toLocaleString()}</p>
 
-                  <p> <span className='font-bold text-black' >Currencies:</span> {countries.currencie}</p>
+                  {/* <p> <span className='font-bold text-black' >Currencies:</span> {countries.currencies.map(currencies =>currencies.code)}</p> */}
 
-                  <p> <span className='font-bold' >Language:</span>{countries.language}</p>
+                  <p> <span className='font-bold white' >Currencies:</span> {countries && countries.currencies && countries.currencies[0].code}</p>
+
+                  <p> <span className='font-bold' >Language:</span>{countries && countries.languages && countries.languages.map((language) => {
+                    return(
+                      <span>{language.name}</span>
+                    )
+                  })}</p>
                 </div>
                 
               </div>
